@@ -42,7 +42,7 @@ background-color:#FFFFFF;
 /* Top navigation */
 .topnav {
   background-color: #444;
-  opacity: 0.85;
+  opacity: 0.9;
   overflow: hidden;
   position: fixed; /* Set the navbar to fixed position */
   top: 0;          /* Position the navbar at the top of the page */
