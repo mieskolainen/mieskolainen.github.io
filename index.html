@@ -29,30 +29,7 @@
   	<a href="#simulation">Simulation</a>
   	<a href="#analysis">Analysis</a>
 	<a href="#hi-tech">Hi-Tech</a>
-	<div class="progress-container">
-		<div class="progress-bar" id="myBar"></div>
-	</div>
 </div>
-
-<script>
-// When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
-
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-
-  if (scrolled < 1) {
-  	document.getElementById("myTopnav").style.display = "none";
-  } else {
-  	document.getElementById("myTopnav").style.display = "block";
-  }
-}
-// Run once in the start
-document.getElementById("myTopnav").style.display = "none";
-</script>
 
 <div class="header">GRANIITTI</div>
 <h1>Algorithmic Engine and Monte Carlo Event Generator for High Energy Diffraction</h1> 
@@ -327,6 +304,30 @@ function getRandomImage(imgAr, path) {
 </div>
 <hr>
 </div>
+
+<div class="progress-container">
+	<div class="progress-bar" id="myBar"></div>
+</div>
+
+<script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+
+  if (scrolled < 1) {
+  	document.getElementById("myTopnav").style.display = "none";
+  } else {
+  	document.getElementById("myTopnav").style.display = "block";
+  }
+}
+// Run once in the start
+document.getElementById("myTopnav").style.display = "none";
+</script>
 
 </body>
 </html>

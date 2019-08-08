@@ -26,14 +26,16 @@ background-color:#FFFFFF;
 
 /* The progress container (gray background) */
 .progress-container {
+  bottom: 0; /* set at bottom */
+  position:fixed;
   width: 100%;
-  height: 0.25em;
+  height: 0.4em;
   background: #444;
 }
 
 /* The progress bar (scroll indicator) */
 .progress-bar {
-  height: 0.25em;
+  height: 0.4em;
   background: #4caf50;
   width: 0%;
 } 
