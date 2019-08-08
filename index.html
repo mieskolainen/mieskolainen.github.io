@@ -21,18 +21,6 @@
 </script>
 </head>
 
-<script>
-// When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
-
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-}
-</script>
-
 <body>
 
 <div class="topnav" id="myTopnav">
@@ -45,6 +33,26 @@ function myFunction() {
 		<div class="progress-bar" id="myBar"></div>
 	</div>
 </div>
+
+<script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+
+  if (scrolled < 1) {
+  	document.getElementById("myTopnav").style.display = "none";
+  } else {
+  	document.getElementById("myTopnav").style.display = "block";
+  }
+}
+// Run once in the start
+document.getElementById("myTopnav").style.display = "none";
+</script>
 
 <div class="header">GRANIITTI</div>
 <h1>Algorithmic Engine and Monte Carlo Event Generator for High Energy Diffraction</h1> 
