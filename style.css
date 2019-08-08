@@ -27,13 +27,13 @@ background-color:#FFFFFF;
 /* The progress container (gray background) */
 .progress-container {
   width: 100%;
-  height: 5px;
+  height: 0.2em;
   background: #444;
 }
 
 /* The progress bar (scroll indicator) */
 .progress-bar {
-  height: 5px;
+  height: 0.2em;
   background: #4caf50;
   width: 0%;
 } 
@@ -54,7 +54,7 @@ background-color:#FFFFFF;
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 11px 16px;
+  padding: 0.5em 1.0em;
   text-decoration: none;
   font-size: 1.3em;
 }
