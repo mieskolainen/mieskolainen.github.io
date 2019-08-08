@@ -1,0 +1,322 @@
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="Description" content="GRANIITTI: Algorithmic Engine and Monte Carlo Event Generator for High Energy Diffraction, Author: Mikael Mieskolainen, University of Helsinki, 2017-2019">
+
+<title>GRANIITTI: Algorithmic Engine and Monte Carlo Event Generator for High Energy Diffraction</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139167137-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139167137-1');
+</script>
+</head>
+
+<body>
+
+<div class="topnav">
+  <a class="active" href="#">^</a>
+  <a href="#installation">Installation</a>
+  <a href="#simulation">Simulation</a>
+  <a href="#analysis">Analysis</a>
+  <a href="#technology">Technology</a>
+  <a href="#about">About</a>
+</div>
+
+<br>
+<h1>Algorithmic Engine and Monte Carlo Event Generator for High Energy Diffraction</h1> 
+<div class="header">GRANIITTI</div>
+
+<div class="left-column">
+
+<div id="VER">
+<b>Program code: </b><boldlink><a href="https://github.com/mieskolainen/graniitti">github.com/mieskolainen/GRANIITTI</a></boldlink>
+</div>
+<br>
+<div id="BUILD_PASSING"></div>
+<div id="BUILD_DATE"></div>
+<br>
+<br>
+<br>
+<br>
+
+<h3>Updates!</h3>
+<p>
+<div id="UPDATE">
+Check at github!
+</div>
+</p>
+</div>
+
+<script>
+// We use CORS proxy here, because otherwise this request does not work
+
+// .then calls are async, that is, they are called at arbitrary space-time point
+fetch('https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/mieskolainen/GRANIITTI/master/VERSION.json')
+.then(function(response) {
+return response.json();
+})
+.then(function(myJson) {
+	console.log(JSON.stringify(myJson));
+
+	// Program version
+	VER = '<b>Program code: </b><a href="https://github.com/mieskolainen/GRANIITTI"><boldlink>' + 
+	'<font color="red">Version ' + myJson.version + ' ('+ myJson.type +')</font></boldlink></a>';
+	document.getElementById("VER").innerHTML = VER;
+
+	// Update description
+	UPDATE = '<div>' + myJson.date + '</div><div>' + myJson.update + '</div>';
+	document.getElementById("UPDATE").innerHTML = UPDATE;
+
+});
+</script>
+
+<script>
+// .then calls are async, that is, they are called at arbitrary space-time point
+fetch('https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/mieskolainen/GRANIITTI/master/develop/BUILD.json')
+.then(function(response) {
+return response.json();
+})
+.then(function(myJson) {
+	console.log(JSON.stringify(myJson));
+
+	// Build-status
+	PASSING   = '<img src="img/passing.svg" title="automatic build-passing">';
+	if (!myJson.build_passing) {
+	PASSING   = '<img src="img/failing.svg" title="automatic build-failing">';
+	}
+	document.getElementById("BUILD_PASSING").innerHTML = PASSING;
+	document.getElementById("BUILD_DATE").innerHTML    = '<font color="gray" size=2em>' + myJson.build_date + '</font>';
+});
+
+var random_images_array = ['dsigmadt.png', 'central_production.png'];
+
+//<a href="img/dsigmadt.png"><img src="img/dsigmadt.png" height="325" title="Elastic dsigma/dt [click]"></a>
+
+function getRandomImage(imgAr, path) {
+    path = path || 'img/'; // default path here
+    var num = Math.floor( Math.random() * imgAr.length );
+    var img = imgAr[ num ];
+    var imgStr = '<img src="' + path + img + '" height="325" alt = "">';
+    document.write(imgStr); document.close();
+}
+</script>
+
+<div class="right-column"></div>
+<div class="center-column">
+
+<div style="text-align:center">
+	<br>
+	<br>
+	<p>
+	<div class="2-pics">
+	<img id="image_1" height="325" src="./graphs/graph-000.png"></img>
+	<img id="image_2" height="325" src="./img/dsigmadt.png"></img>
+	</div>
+	</p>
+	<p>
+	<b>Author: </b><a href="https://github.com/mieskolainen">Mikael Mieskolainen</a>, <a href="https://www.helsinki.fi/en" style="color: black;">University of Helsinki</a>, <a href="https://www.helsinki.fi/en/faculty-of-science/faculty/physics">Department of Physics</a>, 2017-2019, firstname.lastname@helsinki.fi
+	</p>
+	<p>
+	References: <a href="https://arxiv.org/abs/1811.01730">arXiv:1811.01730 [hep-ph]</a>
+	</p>
+</div>
+
+<script type = "text/javascript">
+    var image1 = document.getElementById("image_1");
+
+    var images1 = [];
+    for (i = 0; i <= 2; i++) {
+      images1[i] = './graphs/graph-' + i + '.png';
+    }
+
+    var currentPos1 = 0;
+
+    function changeimage1() {
+        if (++currentPos1 >= images1.length)
+            currentPos1 = 0;
+
+        image1.src = images1[currentPos1];
+    }
+    setInterval(changeimage1, 800); // ms
+</script>
+
+<div style="text-align:left">
+<section id="installation" class="nav-padding">
+	<br>
+	<br>
+	<h2>Installation</h2>
+
+	<i>A working CVMFS environment with g++8 and ROOT6 at lxplus.cern.ch:</i>
+	<div class="code">
+	<fix> <b>$ </b></fix>source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_latest x86_64-centos7-gcc8-opt</div>
+	<br>
+	<br>
+	<i>Full installation:</i>
+	<div class="code">
+	<fix> <b>$ </b></fix>git clone --depth 1 https://github.com/mieskolainen/graniitti && cd graniitti<br>
+	<fix> <b>$ </b></fix>cd install && source autoinstall.sh && cd ..<br>
+	<fix> <b>$ </b></fix>source ./install/setenv.sh<br>
+	<fix> <b>$ </b></fix>make -j4 CXX=g++ <fix><font style="color:rgb(120,120,120)">(<i>alternative</i> CXX=clang-5.0)</font></fix><br>
+	</div>
+	<p>
+	This has been tested on a standalone Ubuntu 16/18+ with CXX=<a href="https://gcc.gnu.org">g++-7</a> / <a href="https://clang.llvm.org">clang-5.0</a>. To compile with ROOT libraries, see docs.
+	</p>
+	<br>
+	<i>Fast updates:</i>
+	<div class="code">
+	<fix> <b>$ </b></fix>git pull origin master && source ./install/setenv.sh && make superclean && make -j4 <br>
+	</div>
+
+	<h2>First run</h2>
+	
+	<div class="code">
+	<fix> <b>$ </b></fix>./bin/gr
+	</div>
+	<p>
+	Will print out instructions. See also <a href="https://github.com/mieskolainen/GRANIITTI/blob/master/docs/FAQ">./docs/FAQ</a>
+	</p>
+</section>
+	<br>
+<section id="simulation" class="nav-padding">
+<hr>	
+<br>
+	<h2>Physics simulation, synthesis and event generation</h2>
+	
+	<ul> 
+	<li><span> <em>pp</em>: Central exclusive Pomeron-Pomeron, Gamma-Pomeron, Gamma-Gamma (kt-EPA), Durham QCD/KMR (<em>gg</em>) processes</span></li>
+	<li><span> Low-mass forward proton <b>excitation</b> (<em>N*</em>)</span></li>
+	<li><span> A user extendable set of scattering amplitudes with helicity amplitudes e.g. from MadGraph
+	<li><span> Differential eikonal event-by-event <b>Pomeron loop integral screening</b> (absorption) with numerical Fourier-Bessel transform</span></li>
+	<li><span> <boldlink><a href="https://arxiv.org/abs/1405.0018">Durham QCD</a></boldlink> loop framework with spin-parity projection and a generalized gluon pdf transformation (Shuvaev transform+Sudakov suppression)</span></li>
+	<li><span> <boldlink><a href="https://arxiv.org/abs/1309.3478">Tensor Pomeron model</a></boldlink> scattering amplitudes for continuum + resonances</span></li>
+	<li style="margin-bottom:2em"><span> Arbitrary Jacob-Wick <b>helicity decay</b> 1 &rarr; 2 amplitudes with any spin and cascade spin correlations, polarization parametrized via spin density matrices, parametric proton-system-proton transverse couplings ('Glueball filter dynamics')</span></li>
+	<div align="center">
+	<img src="graphs/graph-0.png" height="220" style="border:0;">
+	<img src="graphs/graph-003.png" height="220" style="border:0;">
+	</div>
+	<br>
+	<li><span> <b>Exact 2 &rarr; <em>N</em> relativistic kinematics</b> with different phase space composition options, automated Lorentz scalars and 4-momenta for arbitrary amplitudes</span></li>
+	<li><span> Arbitrary wide/deep decay chains according to the phase space with interpreter syntax</span></li>
+	<li><span> Elastic scattering through the eikonal screening amplitude</span></li>
+	<li><span> Single and Double Diffraction (triple Pomeron) and soft Non-Diffractive (with a 'Retro style' KISS fragmentation) - as a simple reference</span><br></li>
+	</ul>
+
+<div style="text-align:center">
+	<a href="img/central_production.png"><img src="img/central_production.png" height="400" title="Soft central production at the LHC [click]"style="border:0;"></a>
+	<br>
+	<p><i>Soft central exclusive production pp &rarr; p + X + p</i></p>
+</div>
+
+</section>
+	<br>
+<section id="analysis" class="nav-padding">
+<hr>	
+<br>
+	<h2>Physics analysis, inference and inversion</h2>
+	
+	<ul>
+	<li><span> Ultrafast and automated fiducial observable studies (tracking cuts, forward vetos) - physics in 5 minutes</span></li>
+	<li><span> Spin studies: 2-body final state angular distribution Laplace's <b>spherical harmonics expansion</b> (to arbitrary order in <em>LM</em>) and inversion via an extended Maximum Likelihood fit and closed-form algebraic inversion - including multistep factorization of fiducial acceptance and efficiency via moment mixing matrices (1. detector, 2. fiducial and 3. flat phase space) </span></li>
+	</ul>
+<br>
+<div style="text-align:center">
+	<a href="img/moments_fid.png"><img src="img/moments_fid.png" height="290" style="border:0;" title="Fiducial phase space harmonic moments [click]"></a>
+	<a href="img/moments_fla.png"><img src="img/moments_fla.png" height="290" style="border:2;" title="Flat inverted phase space harmonic moments [click]"></a>
+	<br>
+	<p><i>Spherical moments in fidual phase space (left) vs after inversion in flat phase space (right)</i></p>
+</div>
+<br>
+	<ul>
+	<li><span> Low-Mass central production fit tool (<b>continuum + interfering resonances</b>) using arbitrary differential distributions</span></li>	
+	<li><span> Eikonal Pomeron model fit tool using differential elastic d&sigma;/dt data</span></li>
+	<li><span> Use <a href="https://github.com/mieskolainen/DREM-PID/"><boldlink>DREM-PID</boldlink></a> for optimal final state particle and decay channel identification</span></li>
+	<li><span> Use <a href="https://github.com/mieskolainen/DeepEfficiency/"><boldlink>DeepEfficiency</boldlink></a> for minimally biased fiducial measurement efficiency corrections</span></li>
+	<li><span> Use <a href="https://github.com/mieskolainen/Diffractive-Combinatorics/"><boldlink>Diffractive Combinatorics</boldlink></a> for novel fiducial measurements of inclusive diffraction</span></li>
+	<li><span> Output directly to Rivet via HepMC - robust check of the generator output, measurement definition and projections against existing fiducial measurements</span></li>
+	</ul>
+<br>
+<div style="text-align:center">
+	<a href="img/frames.png"><img src="img/frames.png" height="280" style="border:0;" title="Decay angles in different frames [click]""></a>
+	<p><i>Decay angles in Collins-Soper, Helicity, Lab, Gottfried, Pseudo-Gottfried, Non-rotated rest frame </i></p>
+<br>
+</div>
+
+</section>
+	<br>
+<section id="technology" class="nav-padding">
+<hr>	
+<br>
+	<h2>Technology</h2>
+
+	<ul>
+	<li><span> <b>Fully multithreaded</b> (max CPU) VEGAS importance sampling Monte Carlo engine; weighted and unweighted event generation</span></li>
+	<li><span> <a href="https://www.json.org"><boldlink>JSON</boldlink></a> object file (partial <a href="https://json5.org/">JSON5</a>) and commandline control</span></li>
+	<li><span> HepMC3, HepMC2 and HEPEVT event record output, HepMC3 to LHE converter</span></li>
+	<li><span> Autotesting and comparison with LHC/Tevatron measurements</span></li>
+	<li><span> Automatic version update notifications</span></li>
+	<li><span> Based on modern <a href="https://isocpp.org"><boldlink>C++1x</boldlink></a> technology</span></li>
+	</ul>
+<div style="text-align:center">
+	<a href="https://en.wikipedia.org/wiki/JSON" title="source: wiki/JSON"><img src="img/JSON_vector_logo.png" height="125"></a>
+	<img src="img/empty.png" height="5">
+	<a href="https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)" title="source: wiki/multithreading; Intel">
+	<img src="img/cores.jpg" height="125"></a>
+	<img src="img/empty.png" height="5">
+	<a href="https://en.wikipedia.org/wiki/C%2B%2B" title="source: wiki/C++"><img src="img/ISO_C++_Logo.png" height="125""></a>
+	<br><br>
+</div>
+</section>
+	<br>
+<section id="about" class="nav-padding">
+<hr>	
+<br>
+	<h2>Inline References</h2>
+	<p>
+	The source code includes inline references to the relevant papers - not just as a technical/academic reference, but also to avoid 'black-boxification' and improve code quality. These can be printed by running:
+	</p>
+	<div class="code">
+	<fix><b>$> </b></fix>grep -r -n "REFERENCE:" ./src/ ./include/
+	</div>
+
+	<h2>Compatible HEP software</h2>
+	
+	<ul>
+	<li><span> <a href="https://gitlab.cern.ch/hepmc/HepMC3">HepMC 3</a>: New rewrite of HepMC event record</span></li>
+	<li><span> <a href="https://lhapdf.hepforge.org/">LHAPDF 6</a>: Standard for evaluating parton densities from discretised data files</span></li>
+	<li><span> <a href="https://root.cern.ch/">ROOT</a>: Standard analysis tool framework in HEP</span></li>
+	<li><span> <a href="https://launchpad.net/mg5amcnlo">MadGraph 5_aMC@NLO</a>: Amplitude generator</span></li>
+	<li><span> <a href="http://home.thep.lu.se/Pythia/">Pythia 8</a>: For fragmenting partonic final states or forward systems, for example</span></li>
+	<li><span> <a href="https://cp3.irmp.ucl.ac.be/projects/delphes">Delphes 3</a>: Fast detector simulation framework</span></li>
+	<li><span> <a href="https://rivet.hepforge.org/">Rivet</a>: Robust Independent Validation of Experiment and Theory toolkit</span></li>
+	</ul>
+
+</section>	
+
+<section id="license" class="nav-padding">
+
+	<h2>License</h2>
+
+	<a href="https://opensource.org/licenses/GPL-3.0">GPL-3.0 License</a> (full package with HepMC3 and LHAPDF6)<br>
+	<a href="https://opensource.org/licenses/MIT">MIT License</a> (single source files)<br>
+	<a href="http://www.montecarlonet.org/GUIDELINES">MCNet Guidelines</a> For general information
+
+</section>
+
+<div style="text-align:center">
+	<img src="img/empty.png" height="125" style="border:0;">
+</div>
+</div>
+<hr>
+</div>
+
+</body>
+</html>
