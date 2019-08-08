@@ -44,7 +44,7 @@ function myFunction() {
   var scrolled = (winScroll / height) * 100;
   document.getElementById("myBar").style.width = scrolled + "%";
 
-  if (scrolled < 0.5) { // percentage
+  if (scrolled < 0.1) { // percentage
   	document.getElementById("myTopnav").style.display = "none";
   } else {
   	document.getElementById("myTopnav").style.display = "block";
