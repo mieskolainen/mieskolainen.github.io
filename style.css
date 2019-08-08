@@ -19,8 +19,8 @@ background-color:#FFFFFF;
   font-size: 9em;
   font-weight: 900;
   width: 100%;
-  z-index: -1;
-  margin-top:-0.136em;
+  z-index: 1;
+  margin-top:0.0em;
   margin-left:-0.03em;
 }
 
