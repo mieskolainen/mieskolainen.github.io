@@ -27,7 +27,7 @@ background-color:#FFFFFF;
 .progress-container {
   width: 100%;
   height: 5px;
-  background: #ccc;
+  background: #444;
 }
 
 /* The progress bar (scroll indicator) */
