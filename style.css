@@ -19,7 +19,8 @@ background-color:#FFFFFF;
   font-size: 9em;
   font-weight: 900;
   width: 100%;
-  margin-top:-0.275em;
+  z-index: -1;
+  margin-top:-0.136em;
   margin-left:-0.03em;
 }
 
@@ -85,7 +86,7 @@ background-color:#FFFFFF;
 h1 {
 font-size: 1.8em;
 color: #555;
-margin-top:2.5em;
+margin-top:-0.2em;
 padding-left: 0.2em;
 }
 h2 {
