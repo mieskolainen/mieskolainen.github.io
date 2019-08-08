@@ -23,16 +23,18 @@
 
 <body>
 
-<div class="topnav">
+<div class="topnav" id="myTopnav">
   <a class="active" href="#">^</a>
   <a href="#installation">Installation</a>
   <a href="#simulation">Simulation</a>
   <a href="#analysis">Analysis</a>
   <a href="#technology">Technology</a>
   <a href="#about">About</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
-<br>
-<br>
+
 <h1>Algorithmic Engine and Monte Carlo Event Generator for High Energy Diffraction</h1> 
 <div class="header">GRANIITTI</div>
 
@@ -153,7 +155,6 @@ function getRandomImage(imgAr, path) {
 <div style="text-align:left">
 <section id="installation" class="nav-padding">
 	<br>
-	<br>
 	<h2>Installation</h2>
 
 	<i>A working CVMFS environment with g++8 and ROOT6 at lxplus.cern.ch:</i>
@@ -189,7 +190,6 @@ function getRandomImage(imgAr, path) {
 	<br>
 <section id="simulation" class="nav-padding">
 <hr>	
-<br>
 	<h2>Physics simulation, synthesis and event generation</h2>
 	
 	<ul> 
@@ -221,7 +221,6 @@ function getRandomImage(imgAr, path) {
 	<br>
 <section id="analysis" class="nav-padding">
 <hr>	
-<br>
 	<h2>Physics analysis, inference and inversion</h2>
 	
 	<ul>
@@ -255,7 +254,6 @@ function getRandomImage(imgAr, path) {
 	<br>
 <section id="technology" class="nav-padding">
 <hr>	
-<br>
 	<h2>Technology</h2>
 
 	<ul>
@@ -279,7 +277,6 @@ function getRandomImage(imgAr, path) {
 	<br>
 <section id="about" class="nav-padding">
 <hr>	
-<br>
 	<h2>Inline References</h2>
 	<p>
 	The source code includes inline references to the relevant papers - not just as a technical/academic reference, but also to avoid 'black-boxification' and improve code quality. These can be printed by running:
