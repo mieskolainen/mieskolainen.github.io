@@ -71,6 +71,25 @@ background-color:#FFFFFF;
   color: white;
 }
 
+/* active top nav buttons based on scrolling */
+.section_active a {
+  float: left;
+  background-color: #ddd;
+  color: black;
+  text-align: center;
+  padding: 0.5em 1.0em;
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+.section_inactive a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 0.5em 1.0em;
+  text-decoration: none;
+  font-size: 1.3em;
+}
 
 /* side by side images */
 .row {
@@ -142,6 +161,9 @@ background-color: white;
 li span {
 font-weight: normal;
 }
+
+
+
 
 /* code block */
 .code {

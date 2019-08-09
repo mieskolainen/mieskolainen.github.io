@@ -25,34 +25,85 @@
 
 <div class="topnav" id="myTopnav">
   	<a class="active" href="#">^</a>
-  	<a href="#installation">Installation</a>
-  	<a href="#simulation">Simulation</a>
-  	<a href="#analysis">Analysis</a>
-	<a href="#technology">Technology</a>
+  	<div id="installation_button" class="section_inactive"><a href="#installation">Installation</a></div>
+  	<div id="simulation_button" class="section_inactive"><a href="#simulation">Simulation</a></div>
+  	<div id="analysis_button" class="section_inactive"><a href="#analysis">Analysis</a></div>
+	<div id="technology_button" class="section_inactive"><a href="#technology">Technology</a></div>
 	<div class="progress-container">
 		<div class="progress-bar" id="myBar"></div>
 	</div>
 </div>
+
 
 <script>
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
 
 function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
+	var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+	var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+	var scrolled = (winScroll / height) * 100;
+	document.getElementById("myBar").style.width = scrolled + "%";
 
-  if (scrolled < 0.1) { // percentage
-  	document.getElementById("myTopnav").style.display = "none";
-  } else {
-  	document.getElementById("myTopnav").style.display = "block";
-  }
+	if (scrolled < 0.1) { // percentage
+		document.getElementById("myTopnav").style.display = "none";
+	} else {
+		document.getElementById("myTopnav").style.display = "block";
+	}
+	//document.getElementById("myTopnav").style.display = "none";
+	
+	// In reverse order
+	var sections = ["technology", "analysis", "simulation", "installation"];
+	var tagged = false;
+
+	for (k = 0; k < sections.length; k++) {
+
+		var myElement = document.querySelector("#" + sections[k]);
+		var position  = getPosition(myElement);
+		
+		var tune = 0.125;
+		var Y = position.y - tune * document.documentElement.clientHeight;
+		if (Y < 0 && tagged == false) {
+			document.getElementById(sections[k] + "_button").className = "section_active";
+			tagged = true;
+		} else {
+			document.getElementById(sections[k] + "_button").className = "section_inactive";
+		}
+	}
 }
 // Run once in the start
 document.getElementById("myTopnav").style.display = "none";
+
+// --------------------------
+
+// Get DOM element position
+function getPosition(elem) {
+  var xPos = 0;
+  var yPos = 0;
+ 
+  while (elem) {
+    if (elem.tagName == "BODY") {
+      // body/window/document and page scroll treatment
+      var xScroll = elem.scrollLeft || document.documentElement.scrollLeft;
+      var yScroll = elem.scrollTop || document.documentElement.scrollTop;
+ 
+      xPos += (elem.offsetLeft - xScroll + elem.clientLeft);
+      yPos += (elem.offsetTop - yScroll + elem.clientTop);
+    } else {
+      xPos += (elem.offsetLeft - elem.scrollLeft + elem.clientLeft);
+      yPos += (elem.offsetTop - elem.scrollTop + elem.clientTop);
+    }
+ 
+    elem = elem.offsetParent;
+  }
+  return {
+    x: xPos,
+    y: yPos
+  };
+}
+
 </script>
+
 
 <div class="header">GRANIITTI</div>
 <h1>Algorithmic Engine and Monte Carlo Event Generator for High Energy Diffraction</h1> 
@@ -172,7 +223,7 @@ function getRandomImage(imgAr, path) {
 </script>
 
 <div style="text-align:left">
-<section id="installation" class="nav-padding">
+<section id="installation" class="installation">
 	<br>
 	<h2>Installation</h2>
 
@@ -206,7 +257,7 @@ function getRandomImage(imgAr, path) {
 	Will print out instructions. See also <a href="https://github.com/mieskolainen/GRANIITTI/blob/master/docs/FAQ">./docs/FAQ</a>
 	</p>
 </section>
-<section id="simulation" class="nav-padding">
+<section id="simulation" class="simulation">
 <hr>	
 	<h2>Physics simulation, synthesis and event generation</h2>
 	
@@ -236,7 +287,7 @@ function getRandomImage(imgAr, path) {
 </div>
 
 </section>
-<section id="analysis" class="nav-padding">
+<section id="analysis" class="analysis">
 <hr>	
 	<h2>Physics analysis, inference and inversion</h2>
 	
@@ -267,7 +318,7 @@ function getRandomImage(imgAr, path) {
 </div>
 
 </section>
-<section id="technology" class="nav-padding">
+<section id="technology" class="technology">
 <hr>	
 	<h2>Technology</h2>
 
@@ -289,7 +340,7 @@ function getRandomImage(imgAr, path) {
 	<br>
 </div>
 </section>
-<section id="about" class="nav-padding">
+<section id="about" class="about">
 	<h2>Inline References</h2>
 	<p>
 	The source code includes inline references to the relevant papers - not just as a technical/academic reference, but also to avoid 'black-boxification' and improve code quality. These can be printed by running:
@@ -311,7 +362,7 @@ function getRandomImage(imgAr, path) {
 	</ul>
 
 </section>
-<section id="license" class="nav-padding">
+<section id="license" class="license">
 
 	<h2>License</h2>
 
