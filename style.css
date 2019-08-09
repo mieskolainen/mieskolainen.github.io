@@ -72,7 +72,7 @@ background-color:#FFFFFF;
 }
 
 /* active top nav buttons based on scrolling */
-.section_active a {
+.topnav_active a {
   float: left;
   background-color: #ddd;
   color: black;
@@ -82,7 +82,7 @@ background-color:#FFFFFF;
   font-size: 1.3em;
 }
 
-.section_inactive a {
+.topnav_inactive a {
   float: left;
   color: #f2f2f2;
   text-align: center;

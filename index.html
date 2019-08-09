@@ -25,10 +25,10 @@
 
 <div class="topnav" id="myTopnav">
   	<a class="active" href="#">^</a>
-  	<div id="installation_button" class="section_inactive"><a href="#installation">Installation</a></div>
-  	<div id="simulation_button" class="section_inactive"><a href="#simulation">Simulation</a></div>
-  	<div id="analysis_button" class="section_inactive"><a href="#analysis">Analysis</a></div>
-	<div id="technology_button" class="section_inactive"><a href="#technology">Technology</a></div>
+  	<div id="installation_button"><a href="#installation">Installation</a></div>
+  	<div id="simulation_button"><a href="#simulation">Simulation</a></div>
+  	<div id="analysis_button"><a href="#analysis">Analysis</a></div>
+	<div id="technology_button"><a href="#technology">Technology</a></div>
 	<div class="progress-container">
 		<div class="progress-bar" id="myBar"></div>
 	</div>
@@ -64,10 +64,10 @@ function myFunction() {
 		var tune = 0.125;
 		var Y = position.y - tune * document.documentElement.clientHeight;
 		if (Y < 0 && tagged == false) {
-			document.getElementById(sections[k] + "_button").className = "section_active";
+			document.getElementById(sections[k] + "_button").className = "topnav_active";
 			tagged = true;
 		} else {
-			document.getElementById(sections[k] + "_button").className = "section_inactive";
+			document.getElementById(sections[k] + "_button").className = "topnav_inactive";
 		}
 	}
 }
