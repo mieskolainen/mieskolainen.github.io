@@ -8,6 +8,7 @@ a:active {text-decoration:underline;}
 
 html {
   scroll-behavior: smooth;
+  text-size-adjust: auto;
 }
 
 body { 
@@ -22,6 +23,11 @@ background-color:#FFFFFF;
   z-index: 1;
   margin-top:-0.15em;
   margin-left:-0.03em;
+}
+
+.navsec {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 /* The progress container (gray background) */
