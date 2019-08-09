@@ -71,9 +71,9 @@ background-color:#FFFFFF;
   color: black;
 }
 
-/* Active/current link */
+/* Active class */
 .topnav a.active {
-  background-color: #4CAF50;
+  background-color: #4CAF50; /* green */
   color: white;
 }
 
