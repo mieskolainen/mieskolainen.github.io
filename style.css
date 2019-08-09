@@ -90,6 +90,7 @@ background-color:#FFFFFF;
 
 .topnav_inactive a {
   float: left;
+  background-color: #444;  
   color: #f2f2f2;
   text-align: center;
   padding: 0.5em 1.75em;
