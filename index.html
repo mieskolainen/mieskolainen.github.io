@@ -232,9 +232,10 @@ m.lastname@imperial.ac.uk
 	<br>
 	<h2>Installation</h2>
 
-	<i>A working CVMFS environment with g++8 and ROOT6 at lxplus.cern.ch [CentOS7]:</i>
+	<i>A working CVMFS environment with g++9 and ROOT6 at lxplus.cern.ch [CentOS7]:</i>
 	<div class="code">
-	<fix> <b>$ </b></fix>source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_latest x86_64-centos7-gcc8-opt</div>
+	<fix> <b>$ </b></fix>source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_98python3 x86_64-centos7-gcc9-opt</div>
+	You can list all the available options by sourcing the first (two) commands.
 	<br>
 	<br>
 	<i>Full installation:</i>
@@ -245,7 +246,7 @@ m.lastname@imperial.ac.uk
 	<fix> <b>$ </b></fix>make -j4 CXX=g++ <fix><font style="color:rgb(120,120,120)">(<i>alternative</i> CXX=clang)</font></fix><br>
 	</div>
 	<p>
-	This has been tested on a standalone Ubuntu 20.04 with CXX=<a href="https://gcc.gnu.org">g++ 7 or newer</a> / <a href="https://clang.llvm.org">clang 6 or newer</a>. In addition, you need cmake and python3-dev libraries (apt get). To compile with ROOT libraries, use g++ possibly with ROOT14=TRUE tag (see the docs).
+	This has been tested on a standalone Ubuntu 20.04 with CXX=<a href="https://gcc.gnu.org">g++ 9 or newer</a> / <a href="https://clang.llvm.org">clang 6 or newer</a>. In addition, you need cmake and python3-dev libraries (apt get). To compile with ROOT libraries, use g++ (see the docs).
 	</p>
 	<br>
 	<i>Fast updates:</i>
@@ -309,7 +310,7 @@ m.lastname@imperial.ac.uk
 </div>
 <br>
 	<ul>
-	<li><span> Low-Mass central production fit tool (<b>continuum + interfering resonances</b>) using arbitrary differential distributions</span></li>	
+	<li><span> Glueball domain central production fit tool (<b>continuum + interfering resonances</b>) using arbitrary differential distributions</span></li>
 	<li><span> Eikonal Pomeron model fit tool using differential elastic d&sigma;/dt data</span></li>
 	<li><span> Use <a href="https://github.com/mieskolainen/DREM-PID/"><boldlink>DREM-PID</boldlink></a> for optimal final state particle and decay channel identification</span></li>
 	<li><span> Use <a href="https://github.com/mieskolainen/DeepEfficiency/"><boldlink>DeepEfficiency</boldlink></a> for minimally biased fiducial measurement efficiency corrections</span></li>
@@ -328,6 +329,7 @@ m.lastname@imperial.ac.uk
 	<ul>
 	<li><span> <b>Fully multithreaded</b> (max CPU) VEGAS importance sampling Monte Carlo engine; weighted and unweighted event generation</span></li>
 	<li><span> <a href="https://www.json.org"><boldlink>JSON</boldlink></a> object file (partial <a href="https://json5.org/">JSON5</a>) and commandline control</span></li>
+	<li><span> High performance computing (HPC) type distributed and scalable MC model tuning with <a href="https://docs.ray.io">Ray</a></span></li>
 	<li><span> HepMC3, HepMC2 and HEPEVT event record output, HepMC3 to LHE converter</span></li>
 	<li><span> Autotesting and comparison with LHC/Tevatron/RHIC measurements</span></li>
 	<li><span> Automatic version update notifications</span></li>
