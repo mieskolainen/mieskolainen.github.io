@@ -232,12 +232,18 @@ m.lastname@imperial.ac.uk
 	<br>
 	<h2>Installation [04/2021]</h2>
 
-	<i>A working CVMFS environment with g++9 and ROOT6 at lxplus.cern.ch [CentOS7]:</i>
+	<i>A working CVMFS environment with g++9 and ROOT6 at lxplus.cern.ch [CentOS7] + Conda for Python:</i>
 	<div class="code">
 	<fix> <b>$ </b></fix>source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_98python3 x86_64-centos7-gcc9-opt</div>
 	<br>
+	<i>Conda virtual environment for Python tools:</i>
+	<div class="code">
+	<fix> <b>$ </b></fix>conda create -y --name graniitti python==3.8.5<br>
+	<fix> <b>$ </b></fix>conda activate graniitti<br>
+	<fix> <b>$ </b></fix>pip install -r requirements.txt<br>
+	</div>
 	<br>
-	<i>Full installation:</i>
+	<i>Code compilation:</i>
 	<div class="code">
 	<fix> <b>$ </b></fix>git clone --depth 1 https://github.com/mieskolainen/graniitti && cd graniitti<br>
 	<fix> <b>$ </b></fix>cd install && source autoinstall.sh && cd ..<br>
@@ -252,7 +258,7 @@ m.lastname@imperial.ac.uk
 	<div class="code">
 	<fix> <b>$ </b></fix>git pull origin master && source ./install/setenv.sh && make superclean && make -j4 <br>
 	</div>
-
+	
 	<h2>First run</h2>
 	
 	<div class="code">
