@@ -113,7 +113,7 @@ function getPosition(elem) {
 <div class="left-column">
 
 <div id="VER">
-<b>Program code: </b><boldlink><a href="https://github.com/mieskolainen/graniitti">github.com/mieskolainen/GRANIITTI</a></boldlink>
+<b>Program code: </b><boldlink><a href="https://github.com/mieskolainen/graniitti">github.com/mieskolainen/graniitti</a></boldlink>
 </div>
 <br>
 <div id="BUILD_PASSING"></div>
@@ -135,7 +135,8 @@ Check at github!
 // We use CORS proxy here, because otherwise this request does not work
 
 // .then calls are async, that is, they are called at arbitrary space-time point
-fetch('https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/mieskolainen/GRANIITTI/master/VERSION.json')
+//fetch('https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/mieskolainen/graniitti/master/VERSION.json')
+fetch('https://raw.githubusercontent.com/mieskolainen/graniitti/master/VERSION.json')
 .then(function(response) {
 return response.json();
 })
@@ -143,7 +144,7 @@ return response.json();
 	console.log(JSON.stringify(myJson));
 
 	// Program version
-	VER = '<b>Program code: </b><a href="https://github.com/mieskolainen/GRANIITTI"><boldlink>' + 
+	VER = '<b>Program code: </b><a href="https://github.com/mieskolainen/graniitti"><boldlink>' + 
 	'<font color="red">Version ' + myJson.version + ' ('+ myJson.type +')</font></boldlink></a>';
 	document.getElementById("VER").innerHTML = VER;
 
@@ -156,7 +157,8 @@ return response.json();
 
 <script>
 // .then calls are async, that is, they are called at arbitrary space-time point
-fetch('https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/mieskolainen/GRANIITTI/master/develop/BUILD.json')
+// fetch('https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/mieskolainen/graniitti/master/develop/BUILD.json')
+fetch('https://raw.githubusercontent.com/mieskolainen/graniitti/master/develop/BUILD.json')
 .then(function(response) {
 return response.json();
 })
