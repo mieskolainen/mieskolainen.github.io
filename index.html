@@ -172,10 +172,11 @@ return response.json();
 	//}
 	
 	// Travis-status
-	PASSING = '<a href="https://travis-ci.com/mieskolainen/graniitti"><img src="https://travis-ci.com/mieskolainen/graniitti.svg?branch=master"></a>';
+	PASSING = '<a href="https://app.travis-ci.com/github/mieskolainen/graniitti"><img src="https://travis-ci.com/mieskolainen/graniitti.svg?branch=master"></a>';
 	
 	document.getElementById("BUILD_PASSING").innerHTML = PASSING;
-	document.getElementById("BUILD_DATE").innerHTML    = '<font color="gray" size=2em>' + myJson.build_date + '</font>';
+	document.getElementById("BUILD_DATE").innerHTML    = '<font color="gray" size=2em>Travis CI</font>';
+	//document.getElementById("BUILD_DATE").innerHTML   = '<font color="gray" size=2em>' + myJson.build_date + '</font>';
 });
 
 var random_images_array = ['dsigmadt.png', 'central_production.png'];
