@@ -243,7 +243,7 @@ mikael.mieskolainen@cern.ch
 
 	<i>A working CVMFS environment at lxplus.cern.ch:</i>
 	<div class="code">
-	<fix> <b>$ </b></fix>source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_108 x86_64-el9-gcc13-opt</div>
+	<fix> <b>$ </b></fix>source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_110 x86_64-el9-gcc13-opt</div>
 	<br>
 	<i>Conda virtual environment for the Python tools:</i>
 	<div class="code">
@@ -252,21 +252,22 @@ mikael.mieskolainen@cern.ch
 	<fix> <b>$ </b></fix>conda env create -f environment.yml<br>
 	<fix> <b>$ </b></fix>conda activate graniitti<br>
 	<fix> <b>$ </b></fix>pip install -r requirements.txt<br>
+	<fix> <b>$ </b></fix>pip install --no-deps --no-build-isolation hebo<br>
 	</div>
 	<br>
 	<i>Code compilation:</i>
 	<div class="code">
 	<fix> <b>$ </b></fix>source ./install/setenv.sh<br>
 	<fix> <b>$ </b></fix>cd install && source autoinstall.sh && cd ..<br>
-	<fix> <b>$ </b></fix>make -j8<br>
+	<fix> <b>$ </b></fix>cmake -S . -B build && cmake --build build -j8<br>
 	</div>
 	<p>
-	This has been tested on a standalone Ubuntu with CXX=<a href="https://gcc.gnu.org">g++13</a>. In addition, you may need python3-dev libraries (apt get). To compile with ROOT libraries, use g++ (see the docs and <a href="https://github.com/mieskolainen/graniitti">README</a>).
+	This has been tested on a standalone Ubuntu 24.04 and CERN lxplus. To compile with ROOT libraries, see the docs and <a href="https://github.com/mieskolainen/graniitti">README</a>).
 	</p>
 	<br>
 	<i>Fast updates:</i>
 	<div class="code">
-	<fix> <b>$ </b></fix>git pull origin master && source ./install/setenv.sh && make superclean && make -j8 <br>
+	<fix> <b>$ </b></fix>git pull origin master<br>
 	</div>
 	
 	<h2>First run</h2>
@@ -275,7 +276,7 @@ mikael.mieskolainen@cern.ch
 	<fix> <b>$ </b></fix>./bin/gr
 	</div>
 	<p>
-	Will print out instructions. See also <a href="https://github.com/mieskolainen/GRANIITTI/blob/master/docs/FAQ">./docs/FAQ</a>
+	Will print out instructions. See also <a href="https://github.com/mieskolainen/GRANIITTI/blob/master/docs/FAQ.md">./docs/FAQ.md</a>
 	</p>
 </section>
 <section id="simulation" class="navsec">
@@ -283,7 +284,8 @@ mikael.mieskolainen@cern.ch
 	<h2>Physics simulation, synthesis and event generation</h2>
 	
 	<ul> 
-	<li><span> <em>pp</em>: Central exclusive Pomeron-Pomeron, Gamma-Pomeron, Gamma-Gamma (kt-EPA), Durham QCD/KMR (<em>gg</em>) processes</span></li>
+	<li><span> <em>pp</em>: Central exclusive pp Pomeron-Pomeron, Gamma-Pomeron, Gamma-Gamma (kt-EPA), Durham QCD/KMR (<em>gg</em>) processes</span></li>
+	<li><span> UPC initial states (eA,pA,AA) and their forward processes </span></li>
 	<li><span> Forward proton <b>excitation</b> (<em>N*</em>)</span></li>
 	<li><span> A user extendable set of scattering amplitudes with helicity amplitudes e.g. from MadGraph
 	<li><span> Differential eikonal event-by-event <b>Pomeron loop integral screening</b> (absorption) with numerical Fourier-Bessel transform</span></li>
@@ -325,12 +327,9 @@ mikael.mieskolainen@cern.ch
 </div>
 <br>
 	<ul>
-	<li><span> Glueball domain central production fit tool (<b>continuum + interfering resonances</b>) using arbitrary differential distributions</span></li>
-	<li><span> Eikonal Pomeron model fit tool using differential elastic d&sigma;/dt data</span></li>
-	<li><span> Use <a href="https://github.com/mieskolainen/DREM-PID/"><boldlink>DREM-PID</boldlink></a> for optimal final state particle and decay channel identification</span></li>
-	<li><span> Use <a href="https://github.com/mieskolainen/DeepEfficiency/"><boldlink>DeepEfficiency</boldlink></a> for minimally biased fiducial measurement efficiency corrections</span></li>
-	<li><span> Use <a href="https://github.com/mieskolainen/Diffractive-Combinatorics/"><boldlink>Diffractive Combinatorics</boldlink></a> for novel fiducial measurements of inclusive diffraction</span></li>
-	<li><span> Output directly to Rivet via HepMC - robust check of the generator output, measurement definition and projections against existing fiducial measurements</span></li>
+	<li><span> HPC-distributable automated parameter inference using arbitrary differential distributions with <b>icetune</b></span></li>
+	<li><span> Automated fiducial cross-section comparisons with <b>icepacks</b> against HEPData</span></li>
+	<li><span> Output to Rivet via HepMC - robust check of the generator output, measurement definition and projections against existing fiducial measurements</span></li>
 	</ul>
 <br>
 <div style="text-align:center">
@@ -343,12 +342,12 @@ mikael.mieskolainen@cern.ch
 <h2>Technology</h2>
 	<ul>
 	<li><span> <b>Fully multithreaded</b> (max CPU) VEGAS importance sampling Monte Carlo engine; weighted and unweighted event generation</span></li>
-	<li><span> High performance computing (HPC) type distributed and scalable MC model tuning with <a href="https://github.com/ray-project/ray"><boldlink>RAY</boldlink></a>, steered via Python 3</span></li>
+	<li><span> <b>NEUROJAC</b> neural importance sampling with spline-coupling normalizing flows</span></li>
 	<li><span> <a href="https://www.json.org"><boldlink>JSON</boldlink></a> object file (partial <a href="https://json5.org/">JSON5</a>) and commandline control</span></li>
 	<li><span> HepMC3, HepMC2 and HEPEVT event record output, HepMC3 to LHE converter</span></li>
 	<li><span> Autotesting and comparison with LHC/Tevatron/RHIC measurements</span></li>
 	<li><span> Automatic version update notifications</span></li>
-	<li><span> Based on modern <a href="https://isocpp.org"><boldlink>C++17</boldlink></a> language</span></li>
+	<li><span> Based on modern <a href="https://isocpp.org"><boldlink>C++20</boldlink></a> language</span></li>
 	</ul>
 <div style="text-align:center">
 	<a href="https://en.wikipedia.org/wiki/JSON" title="source: wiki/JSON"><img src="img/JSON_vector_logo.png" height="125"></a>
@@ -365,7 +364,7 @@ mikael.mieskolainen@cern.ch
 <section id="about" class="navsec">
 	<h2>Inline References</h2>
 	<p>
-	The source code includes inline references to the relevant papers - not just as a technical/academic reference, but also to avoid 'black-boxification' and improve code quality. These can be printed by running:
+	The source code includes inline references to the relevant papers - not only as a technical/academic reference, but also to avoid 'black-boxification' and improve code quality. These can be printed by running:
 	</p>
 	<div class="code">
 	<fix><b>$ </b></fix>grep -r -n "REFERENCE:" ./src/ ./include/
